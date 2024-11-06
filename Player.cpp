@@ -19,6 +19,7 @@ void Player::useItem() {
 
     std::string itemName;
     std::cout << "Enter the item name: ";
+    std::cin.ignore();  // Clear input buffer
     std::getline(std::cin, itemName);
 
     auto item = inventory.findItem(itemName);
@@ -51,5 +52,8 @@ void Player::useItem() {
 }
 
 void Player::showInventory() const {
-    inventory.displayItems();
+    std::cout << "Inventory:\n";
+    for (auto it = inventory.begin(); it != inventory.end(); ++it) {
+        std::cout << "- " << (*it)->getName() << "\n";
+    }
 }

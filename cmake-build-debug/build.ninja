@@ -85,6 +85,12 @@ build CMakeFiles/DSP.dir/Item.cpp.o: CXX_COMPILER__DSP_unscanned_Debug /Users/ch
   OBJECT_DIR = CMakeFiles/DSP.dir
   OBJECT_FILE_DIR = CMakeFiles/DSP.dir
 
+build CMakeFiles/DSP.dir/Event.cpp.o: CXX_COMPILER__DSP_unscanned_Debug /Users/cha/DSP/Event.cpp || cmake_object_order_depends_target_DSP
+  DEP_FILE = CMakeFiles/DSP.dir/Event.cpp.o.d
+  FLAGS = -g -std=gnu++14 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.2.sdk -fcolor-diagnostics
+  OBJECT_DIR = CMakeFiles/DSP.dir
+  OBJECT_FILE_DIR = CMakeFiles/DSP.dir
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target DSP
@@ -93,7 +99,7 @@ build CMakeFiles/DSP.dir/Item.cpp.o: CXX_COMPILER__DSP_unscanned_Debug /Users/ch
 #############################################
 # Link the executable DSP
 
-build DSP: CXX_EXECUTABLE_LINKER__DSP_Debug CMakeFiles/DSP.dir/main.cpp.o CMakeFiles/DSP.dir/Entity.cpp.o CMakeFiles/DSP.dir/Player.cpp.o CMakeFiles/DSP.dir/Door.cpp.o CMakeFiles/DSP.dir/Inventory.cpp.o CMakeFiles/DSP.dir/Item.cpp.o
+build DSP: CXX_EXECUTABLE_LINKER__DSP_Debug CMakeFiles/DSP.dir/main.cpp.o CMakeFiles/DSP.dir/Entity.cpp.o CMakeFiles/DSP.dir/Player.cpp.o CMakeFiles/DSP.dir/Door.cpp.o CMakeFiles/DSP.dir/Inventory.cpp.o CMakeFiles/DSP.dir/Item.cpp.o CMakeFiles/DSP.dir/Event.cpp.o
   FLAGS = -g -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.2.sdk
   OBJECT_DIR = CMakeFiles/DSP.dir
   POST_BUILD = :

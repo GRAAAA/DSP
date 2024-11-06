@@ -18,7 +18,8 @@ bool Inventory::empty() const {
     return items.empty();
 }
 
-std::shared_ptr<Item> Inventory::findItem(const std::string& itemName) {
+// Add const here to match the declaration in Inventory.h
+std::shared_ptr<Item> Inventory::findItem(const std::string& itemName) const {
     for (const auto& item : items) {
         if (item->getName() == itemName) {
             return item;

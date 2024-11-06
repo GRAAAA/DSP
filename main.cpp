@@ -1,8 +1,10 @@
 #include "Player.h"
 #include "Door.h"
+#include "Event.h"
 #include <iostream>
 #include <memory>
 #include <stack>
+#include <queue>
 #include <cstdlib>
 #include <ctime>
 
@@ -19,7 +21,7 @@ void gameLoop(Player& player) {
         // Generate random doors
         std::unique_ptr<Door> doors[3];
         for (int i = 0; i < 3; ++i) {
-            int doorType = rand() % 5;  // Adjust range as more door types are added
+            int doorType = rand() % 5;
             switch (doorType) {
             case 0: doors[i] = std::make_unique<SafeDoor>(); break;
             case 1: doors[i] = std::make_unique<VendingMachineDoor>(); break;
@@ -43,8 +45,26 @@ void gameLoop(Player& player) {
             std::cout << "Invalid choice. Please choose 1, 2, or 3.\n";
         }
 
-        // Interact with the chosen door
+        // Interact with the chosen door and queue events
+        std::queue<Event> eventQueue;
         doors[choice - 1]->interact(player);
+
+        // Example events to simulate room events after door interaction
+        eventQueue.push(Event(Event::EventType::ENCOUNTER_GHOST, "A ghost appears!"));
+        eventQueue.push(Event(Event::EventType::FIND_ITEM, "You found a mysterious item!"));
+        eventQueue.push(Event(Event::EventType::MOVE_TO_NEXT_FLOOR, "You move to the next floor."));
+
+        // Process each event in the queue
+        while (!eventQueue.empty()) {
+            Event currentEvent = eventQueue.front();
+            currentEvent.trigger(player);
+            eventQueue.pop();
+
+            if (!player.isAlive()) {
+                std::cout << "Game Over. You didn't survive the haunted house.\n";
+                return;
+            }
+        }
 
         // Check if player survives and moves to the next floor
         if (player.isAlive()) {
