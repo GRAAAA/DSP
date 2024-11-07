@@ -10,7 +10,8 @@ public:
     enum class EventType {
         ENCOUNTER_GHOST,
         FIND_ITEM,
-        MOVE_TO_NEXT_FLOOR
+        MOVE_TO_NEXT_FLOOR,
+        NOTIFICATION
     };
 
 private:

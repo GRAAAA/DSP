@@ -12,11 +12,14 @@ void Event::trigger(Player& player) const {
         break;
         case EventType::FIND_ITEM:
             std::cout << description << "\n";
-        player.addItem(std::make_shared<Item>("Health Potion", Item::ItemType::EMPTY_BOTTLE));  // Example item
+        player.addItem(std::make_shared<Item>("Broken KEY", Item::ItemType::KEY_PART));  // Example item
         break;
         case EventType::MOVE_TO_NEXT_FLOOR:
             std::cout << description << "\n";
         // Logic to move to the next floor
+        break;
+        case EventType::NOTIFICATION:
+            std::cout << description << "\n";  // Just display the message
         break;
     }
 }

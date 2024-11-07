@@ -74,17 +74,29 @@ void MysteryBoxDoor::interact(Player& player) {
     while (true) {
         std::cout << "Type 'open' to open the box: ";
         std::cin >> input;
-        if (input == "open") break;
+        if (input == "open") {
+            break;
+        }
         std::cout << "Invalid input. Please type 'open'.\n";
     }
 
-    int content = rand() % 2;
-    if (content == 0) {
+    // Define the list of possible items that can drop from the mystery box
+    std::vector<Item::ItemType> possibleItems = {
+        Item::ItemType::HOLY_WATER, Item::ItemType::MEMO, Item::ItemType::SHIN_RAMEN, Item::ItemType::MAGICAL_TELEPORT
+    };
+
+    // Randomly select an item type from the list
+    Item::ItemType randomItemType = possibleItems[rand() % possibleItems.size()];
+
+    // 50% chance to get an item, 50% chance for a trap
+    if (rand() % 2 == 0) {
         std::cout << "The box contained a trap! You lose 1 health.\n";
         player.takeDamage(1);
     } else {
-        std::cout << "The box contained a helpful item!\n";
-        player.addItem(std::make_shared<Item>("Health Potion", Item::ItemType::EMPTY_BOTTLE));
+        // Create the item and add it to the player's inventory
+        auto item = std::make_shared<Item>("Mysterious Item", randomItemType);
+        player.addItem(item);
+        std::cout << "The box contained a " << item->getName() << "!\n";
     }
 }
 

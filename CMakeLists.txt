@@ -10,5 +10,6 @@ add_executable(DSP
         Door.cpp
         Inventory.cpp
         Item.cpp
+        Event.cpp
         Event.cpp  # Make sure this line is present
 )
